@@ -13,7 +13,7 @@ AI Dungeon Master RPG is an **interactive text-based adventure** where an **AI a
 ## 🛠️ Tech Stack  
 - **Frontend**: HTML, CSS, JavaScript  
 - **Backend**: Flask (Python)  
-- **AI**: [Tea Tree](https://teatre.chat)  
+- **AI**: [Tea Tree](https://teatree.chat)  
 - **Hosting**: Vercel / Any Flask-compatible server
 
 ## 📥 Installation  
@@ -39,7 +39,7 @@ Now open `http://127.0.0.1:5000/` in your browser.
 ✅ Easy to Play – Just click and explore!
 
 ## 🔗 Links
-* Live Demo: [Link](https://)
+* Live Demo: [Link](https://rpg.obsidiusnet.au/)
 * Join the Discord: [Your Discord Server](https://discord.gg/8Fcku2M5Gx)
 *  AI API Discord (Green Tea Development): [Tea Tree AI Discord](https://discord.gg/aQbvStbN3h)
 

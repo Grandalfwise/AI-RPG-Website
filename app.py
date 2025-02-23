@@ -24,7 +24,7 @@ STORIES = {
 
 def clean_choice(choice):
     """Cleans AI-generated choice text by removing numbers, colons, and extra spaces."""
-    return re.sub(r"^\d+\s*[:.-]?\s*", "", choice).strip()
+    return re.sub(r"^\s*CHOICE\s*\d+\s*[:.-]?\s*", "", choice, flags=re.IGNORECASE).strip()
 
 
 def run_ai(model, messages):
