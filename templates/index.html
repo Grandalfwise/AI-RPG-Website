@@ -6,7 +6,7 @@
     <title>AI Dungeon Master RPG</title>
     <meta name="description" content="An AI RPG made game!">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='logo-no-background.png')}}">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/logo-no-background.png')}}">
     <meta name="author" content="Grandalfwise">
 </head>
 
@@ -21,7 +21,7 @@
         <img src="https://cdn-icons-png.flaticon.com/512/5968/5968756.png" alt="Discord" class="discord-icon">
     </a>
     <a href="https://discord.gg/aQbvStbN3h" target="_blank" class="teatree-link">
-        <img src="{{ url_for('static', filename='teatree-logo.png')}}" alt="Teatree Discord" class="teatree-image">
+        <img src="{{ url_for('static', filename='images/teatree-logo.png')}}" alt="Teatree Discord" class="teatree-image">
     </a>
 
     <div id="game-container" class="game-container">
@@ -30,7 +30,7 @@
             <h2 class="title" data-text="Select a Story:">Select a Story:</h2>
             <p>
                 {% for key, description in stories.items() %}
-                    <p><button class="glow-on-hover" onclick="startGame('{{ key }}')">{{ description }}</button></p>
+                    <p><button class="glow-on-hover" style="font-family: 'IBM Plex Mono';" onclick="startGame('{{ key }}')">{{ description }}</button></p>
                 {% endfor %}
             </p>
         </div>

@@ -1,4 +1,7 @@
-TODO.md
+static/story.js
+templates/game.html
+game.py
+story.py
 
 # User-specific stuff
 .idea/**/workspace.xml

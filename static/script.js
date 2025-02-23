@@ -6,7 +6,8 @@ async function startGame(storyKey) {
     });
 
     let data = await response.json();
-    document.getElementById("story-text").innerText = data.story;
+    const outputElement = document.getElementById("story-text");
+    typeText(outputElement, data.story, 8)
     document.getElementById("story-selection").style.display = "none";
     document.getElementById("restart-button").style.display = "flex";
     document.getElementById("story-output").style.display = "block";
@@ -14,6 +15,7 @@ async function startGame(storyKey) {
 }
 
 async function makeChoice(choiceText) {
+    document.getElementById("choices").style.display = "none";
     let response = await fetch('/next_move', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -21,10 +23,10 @@ async function makeChoice(choiceText) {
     });
 
     let data = await response.json();
-    document.getElementById("story-text").innerText = data.story_update;
+    const outputElement = document.getElementById("story-text");
+    typeText(outputElement, data.story_update, 8)
     generateChoices(data.choices);
-
-    // Show the restart button
+    document.getElementById("choices").style.display = "";
 }
 
 function generateChoices(choices) {
@@ -38,4 +40,19 @@ function generateChoices(choices) {
         button.className = "glow-on-hover";
         choicesDiv.appendChild(button);
     });
+}
+
+function typeText(element, text, speed = 100) {
+    let index = 0;
+    element.textContent = '';
+    
+    function type() {
+        if (index < text.length) {
+            element.textContent += text[index];
+            index++;
+            setTimeout(type, speed);
+        }
+    }
+    
+    type();
 }
