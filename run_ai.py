@@ -10,8 +10,7 @@ API_BASE_URL = "https://teatree.chat/api/chat/completions"
 HEADERS = {"Authorization": f"Bearer {API_TOKEN}"}
 
 def clean_choice(choice):
-    """Cleans AI-generated choice text by removing numbers, colons, and extra spaces."""
-    return re.sub(r"^\s*CHOICE\s*\d+\s*[:.-]?\s*", "", choice, flags=re.IGNORECASE).strip()
+    return re.sub(r"^\s*(CHOICE)?\s*\d+\s*[-:.]?\s*", "", choice, flags=re.IGNORECASE).strip()
 
 def run_ai(model, messages):
     """Send a conversation to the AI and return its response."""

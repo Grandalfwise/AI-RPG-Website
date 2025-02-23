@@ -9,11 +9,12 @@ async function startGame(storyKey) {
     });
 
     let data = await response.json();
+    
     document.getElementById("loader").style.display = "none";
-    const outputElement = document.getElementById("story-text");
-    typeText(outputElement, data.story, 8)
     document.getElementById("restart-button").style.display = "flex";
     document.getElementById("story-output").style.display = "block";
+    const outputElement = document.getElementById("story-text");
+    await typeText(outputElement, data.story, 8)
     generateChoices(data.choices);
 }
 
@@ -30,7 +31,7 @@ async function makeChoice(choiceText) {
     let data = await response.json();
     document.getElementById("loader").style.display = "none";
     const outputElement = document.getElementById("story-text");
-    typeText(outputElement, data.story_update, 8)
+    await typeText(outputElement, data.story_update, 8)
     generateChoices(data.choices);
     document.getElementById("choices").style.display = "";
 }
@@ -49,16 +50,20 @@ function generateChoices(choices) {
 }
 
 function typeText(element, text, speed = 100) {
-    let index = 0;
-    element.textContent = '';
-    
-    function type() {
-        if (index < text.length) {
-            element.textContent += text[index];
-            index++;
-            setTimeout(type, speed);
+    return new Promise((resolve) => {
+        let index = 0;
+        element.textContent = '';
+
+        function type() {
+            if (index < text.length) {
+                element.textContent += text[index];
+                index++;
+                setTimeout(type, speed); // Continue typing with setTimeout
+            } else {
+                resolve(); // Resolve the promise when typing is complete
+            }
         }
-    }
-    
-    type();
+
+        type();
+    });
 }
