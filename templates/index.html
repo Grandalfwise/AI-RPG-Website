@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AI Dungeon Master RPG</title>
+    <meta name="description" content="An AI RPG made game!">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='logo-no-background.png')}}">
+    <meta name="author" content="Grandalfwise">
+</head>
+
+<body>
+
+    <button id="restart-button" class="restart-btn" onClick="window.location.reload();" style="display: none;">Restart</button>
+
+    <a href="https://github.com/Grandalfwise/AI-RPG-Website" target="_blank" class="github-button">
+        <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub" class="github-icon">
+    </a>
+    <a href="https://discord.gg/8Fcku2M5Gx" target="_blank" class="discord-button">
+        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968756.png" alt="Discord" class="discord-icon">
+    </a>
+    <a href="https://discord.gg/aQbvStbN3h" target="_blank" class="teatree-link">
+        <img src="{{ url_for('static', filename='teatree-logo.png')}}" alt="Teatree Discord" class="teatree-image">
+    </a>
+
+    <div id="game-container" class="game-container">
+        <h1 class="title" data-text="AI Dungeon Master RPG">AI Dungeon Master RPG</h1>
+        <div id="story-selection">
+            <h2 class="title" data-text="Select a Story:">Select a Story:</h2>
+            <p>
+                {% for key, description in stories.items() %}
+                    <p><button class="glow-on-hover" onclick="startGame('{{ key }}')">{{ description }}</button></p>
+                {% endfor %}
+            </p>
+        </div>
+        <div id="story-output" style="display: none;">
+            <div id="story-text" class="story-card"></div>
+            <div id="choices"></div>
+        </div>
+    </div>
+</body>
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</html>
