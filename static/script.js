@@ -1,4 +1,7 @@
 async function startGame(storyKey) {
+    document.getElementById("story-selection").style.display = "none";
+    document.getElementById("loader").style.display = "";
+
     let response = await fetch('/start_game', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -6,9 +9,9 @@ async function startGame(storyKey) {
     });
 
     let data = await response.json();
+    document.getElementById("loader").style.display = "none";
     const outputElement = document.getElementById("story-text");
     typeText(outputElement, data.story, 8)
-    document.getElementById("story-selection").style.display = "none";
     document.getElementById("restart-button").style.display = "flex";
     document.getElementById("story-output").style.display = "block";
     generateChoices(data.choices);
@@ -16,6 +19,8 @@ async function startGame(storyKey) {
 
 async function makeChoice(choiceText) {
     document.getElementById("choices").style.display = "none";
+    document.getElementById("loader").style.display = "";
+
     let response = await fetch('/next_move', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -23,6 +28,7 @@ async function makeChoice(choiceText) {
     });
 
     let data = await response.json();
+    document.getElementById("loader").style.display = "none";
     const outputElement = document.getElementById("story-text");
     typeText(outputElement, data.story_update, 8)
     generateChoices(data.choices);
