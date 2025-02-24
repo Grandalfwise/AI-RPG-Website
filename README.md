@@ -3,6 +3,8 @@
 
 AI Dungeon Master RPG is an **interactive text-based adventure** where an **AI acts as the Dungeon Master (DM)**, guiding players through an evolving story based on their choices.  
 
+Live demo now available at [rpg.obsidiusnet.au](https://rpg.obsidiusnet.au/)
+
 ## 🎮 How It Works  
 1. **Choose a Story** – Pick from different adventure settings (e.g., **fantasy, sci-fi, horror**).  
 2. **Receive the Story Setup** – The AI describes the world and the situation.  
@@ -45,6 +47,8 @@ Now open `http://127.0.0.1:5000/` in your browser.
 
 ## 🤝 Contributing
 Want to improve the game? Feel free to fork, submit Pull Requets, or open issues!
+
+Turtledevv was here ;]
 
 ## 📜 License
 This project is licensed under the **GNU Affero General Public License v3.0 (AGPL-3.0)**.
