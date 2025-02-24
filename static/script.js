@@ -14,7 +14,8 @@ async function startGame(storyKey) {
     document.getElementById("restart-button").style.display = "flex";
     document.getElementById("story-output").style.display = "block";
     const outputElement = document.getElementById("story-text");
-    await typeText(outputElement, data.story, 8)
+    formattedText = formatStoryText(data.story);
+    await typeText(outputElement, formattedText, 8)
     generateChoices(data.choices);
 }
 
@@ -31,7 +32,8 @@ async function makeChoice(choiceText) {
     let data = await response.json();
     document.getElementById("loader").style.display = "none";
     const outputElement = document.getElementById("story-text");
-    await typeText(outputElement, data.story_update, 8)
+    formattedText = formatStoryText(data.story_update);
+    await typeText(outputElement, formattedText, 8)
     generateChoices(data.choices);
     document.getElementById("choices").style.display = "";
 }
@@ -43,9 +45,17 @@ function generateChoices(choices) {
     choices.forEach(choice => {
         let button = document.createElement("button");
         button.innerText = choice;
-        button.onclick = () => makeChoice(choice);
-        button.className = "glow-on-hover";
-        choicesDiv.appendChild(button);
+        if (choice == " ") {
+            alert("That choice does not exist. Please try again.");
+        }
+        else if (choice == "") {
+            alert("That choice does not exist. Please try again.");
+        }
+        else {
+            button.onclick = () => makeChoice(choice);
+            button.className = "glow-on-hover";
+            choicesDiv.appendChild(button);
+        }
     });
 }
 
@@ -66,4 +76,11 @@ function typeText(element, text, speed = 100) {
 
         type();
     });
+}
+
+function formatStoryText(text) {
+    text = text.replace(/\*\*(.*?)\*\*/g, "$1");
+    text = text.replace(/\*(.*?)\*/g, "$1");
+    
+    return text;
 }

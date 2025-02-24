@@ -74,7 +74,7 @@ def next_move():
 
     if not user_choice:
         return jsonify({"error": "Invalid choice"}), 400
-
+    
     messages = [
         {"role": "system",
          "content": "You are an AI Dungeon Master. Keep responses under 100 words. Format response as: STORY_TEXT###CHOICE1###CHOICE2###CHOICE3."},
