@@ -5,14 +5,21 @@ import re
 
 load_dotenv('.env')
 API_TOKEN = os.getenv('API_TOKEN')
-
 API_BASE_URL = "https://teatree.chat/api/chat/completions"
 HEADERS = {"Authorization": f"Bearer {API_TOKEN}"}
+
+model = "roleplay-ai"
+convo_history = []
+
+instructions = [
+    {"role": "system",
+      "content": "You are an AI Dungeon Master. Keep responses under 100 words. Format response as: STORY_TEXT###CHOICE 1###CHOICE 2###CHOICE 3."},
+]
 
 def clean_choice(choice):
     return re.sub(r"^\s*(CHOICE)?\s*\d+\s*[-:.]?\s*", "", choice, flags=re.IGNORECASE).strip()
 
-def run_ai(model, messages):
+def run_ai():
     """Send a conversation to the AI and return its response."""
     try:
         response = requests.post(
@@ -20,7 +27,7 @@ def run_ai(model, messages):
             headers=HEADERS,
             json={
                 "model": model,
-                "messages": messages
+                "messages": convo_history + instructions
             }
         )
 

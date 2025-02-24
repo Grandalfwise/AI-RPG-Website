@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request, jsonify
-from run_ai import run_ai, clean_choice
+from run_ai import run_ai, clean_choice, convo_history
 
 
 # Sample RPG story prompts
@@ -48,14 +48,12 @@ def start_game():
     initial_story = STORIES[story_key]
 
     # Ask AI to generate three choices with clear structure
-    messages = [
-        {"role": "system",
-         "content": "You are an AI Dungeon Master. Keep responses under 100 words. Format response as: STORY_TEXT###CHOICE 1###CHOICE 2###CHOICE 3."},
-        {"role": "user",
-         "content": f"The story starts: {initial_story}. What happens next, and what are three choices the player can make?"}
-    ]
+    messages = f"The story starts: {initial_story}. What happens next, and what are three choices the player can make?"
 
-    response = run_ai("roleplay-ai", messages)
+    convo_history.append({'role': 'user', 'content': messages})
+
+
+    response = run_ai()
 
     if "error" in response:
         return jsonify({"error": "AI request failed"}), 500
@@ -75,14 +73,12 @@ def next_move():
     if not user_choice:
         return jsonify({"error": "Invalid choice"}), 400
     
-    messages = [
-        {"role": "system",
-         "content": "You are an AI Dungeon Master. Keep responses under 100 words. Format response as: STORY_TEXT###CHOICE1###CHOICE2###CHOICE3."},
-        {"role": "user",
-         "content": f"The player chooses: {user_choice}. What happens next, and what are three choices the player can make?"}
-    ]
+    messages = f"The player chooses: {user_choice}. What happens next, and what are three choices the player can make?"
 
-    response = run_ai("roleplay-ai", messages)
+    convo_history.append({'role': 'user', 'content': messages})
+    print(f"Conversation History: {convo_history}")
+
+    response = run_ai()
 
     if "error" in response:
         return jsonify({"error": "AI request failed"}), 500
@@ -92,3 +88,8 @@ def next_move():
     story_update, choices = parse_ai_response(ai_response_data)
 
     return jsonify({"story_update": story_update, "choices": choices})
+
+@main_bp.route('/restart', methods=['POST'])
+def restart():
+    convo_history.clear()
+    return jsonify({"message": "Game restarted."})

@@ -1,3 +1,10 @@
+async function restartGame() {
+    await fetch('/restart', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+    });
+}
+
 async function startGame(storyKey) {
     document.getElementById("story-selection").style.display = "none";
     document.getElementById("loader").style.display = "";
