@@ -53,10 +53,10 @@ function generateChoices(choices) {
         let button = document.createElement("button");
         button.innerText = choice;
         if (choice == " ") {
-            alert("That choice does not exist. Please try again.");
+            showPopup('That choice does not exist. Please try again.')
         }
         else if (choice == "") {
-            alert("That choice does not exist. Please try again.");
+            showPopup('That choice does not exist. Please try again.')
         }
         else {
             button.onclick = () => makeChoice(choice);
@@ -90,4 +90,19 @@ function formatStoryText(text) {
     text = text.replace(/\*(.*?)\*/g, "$1");
     
     return text;
+}
+
+
+
+
+function showPopup(message) {
+    const popup = document.getElementById("popup");
+    const messageElement = document.getElementById("popup-message");
+
+    messageElement.innerText = message;
+    popup.style.display = "flex";
+}
+
+function closePopup() {
+    document.getElementById("popup").style.display = "none";
 }

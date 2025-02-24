@@ -241,4 +241,47 @@ h2 {
       19px -19px 0 0px, 38px -19px 0 5px, 57px -19px 0 0px,
       19px 0     0 0px, 38px 0     0 5px, 57px 0     0 0px,
       19px 19px  0 5px, 38px 19px  0 0px, 57px 19px  0 0px}
-  }
+}
+
+.popup {
+    border: 1px solid rgba(181, 0, 236, 0.5);
+    background-color: rgba(181, 0, 236, 0.12156862745098039);
+    box-shadow: 0 0 10px rgba(181, 0, 236, 1);
+    color: #ffffff;
+    transition:0.5s;
+    animation: fadeIn 0.5s ease-in-out;
+    bottom: 20px;
+    right: 20px;
+    position: fixed;
+    display: none;
+    align-items: center;
+    border-radius: 50px;
+}
+
+.popup:hover{
+    background-color: rgba(181, 0, 236, 1);
+    transition:0.5s;
+}
+
+.popup-message {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+/* Close Button */
+.popup button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 0 5px;
+    text-align: right;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(50px); }
+    to { opacity: 1; transform: translateY(0); }
+}
