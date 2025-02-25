@@ -5,7 +5,7 @@ import re
 
 load_dotenv('.env')
 API_TOKEN = os.getenv('API_TOKEN')
-API_BASE_URL = "https://teatree.chat/api/chat/completions"
+API_BASE_URL = "https://chat.teatree.chat/api/chat/completions"
 HEADERS = {"Authorization": f"Bearer {API_TOKEN}"}
 
 model = "roleplay-ai"
