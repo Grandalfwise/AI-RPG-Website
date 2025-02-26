@@ -60,3 +60,6 @@ https://www.pokemon.com/static-assets/content-assets/cms/img/video-games/firered
 - "chosen_sword" : "A blacksmith hands you a rusted sword. “This blade has chosen you.”",
 - "abondoned_spacecraft" : "A distress beacon leads you to an abondoned spacecraft, but the logs say it was lost 200 years ago.",
 - "future_call" : "“This is Mission Control. You launched three hours ago. Why are you calling us from the future?”"
+- "cyber_heist": "The city skyline flickers. A rogue AI has taken control of the Grid.",
+- "apocalypse_survival": "The last radio transmission crackles: 'If anyone is out there… meet at sunrise.'",
+- "ancient_temple": "You wake up in a ruined temple, ancient carvings glowing softly."

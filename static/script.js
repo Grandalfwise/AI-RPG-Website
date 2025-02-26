@@ -92,9 +92,6 @@ function formatStoryText(text) {
     return text;
 }
 
-
-
-
 function showPopup(title, message) {
     const popup = document.getElementById("popup");
     const closeIcon = document.getElementById("close");
