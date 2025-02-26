@@ -2,6 +2,7 @@ static/story.js
 templates/game.html
 game.py
 story.py
+extra.txt
 
 # User-specific stuff
 .idea/**/workspace.xml

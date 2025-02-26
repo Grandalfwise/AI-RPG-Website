@@ -53,10 +53,10 @@ function generateChoices(choices) {
         let button = document.createElement("button");
         button.innerText = choice;
         if (choice == " ") {
-            showPopup('That choice does not exist. Please try again.')
+            showPopup('Error','That choice does not exist. Please try again.')
         }
         else if (choice == "") {
-            showPopup('That choice does not exist. Please try again.')
+            showPopup('Error','That choice does not exist. Please try again.')
         }
         else {
             button.onclick = () => makeChoice(choice);
@@ -95,14 +95,41 @@ function formatStoryText(text) {
 
 
 
-function showPopup(message) {
+function showPopup(title, message) {
     const popup = document.getElementById("popup");
-    const messageElement = document.getElementById("popup-message");
+    const closeIcon = document.getElementById("close");
+    const progress = document.getElementById("progress");
 
-    messageElement.innerText = message;
+    if (!popup || !progress) {
+        console.error("❌ Popup or progress bar element not found!");
+        return;
+    }
+
+    document.getElementById("popup-title").innerText = title;
+    document.getElementById("popup-message").innerText = message;
+
+    // Show popup
     popup.style.display = "flex";
-}
+    popup.classList.add("active");
 
-function closePopup() {
-    document.getElementById("popup").style.display = "none";
+    // Reset progress animation (force reflow to restart animation)
+    progress.classList.remove("active");
+    void progress.offsetWidth; // Forces a reflow to restart animation
+    progress.classList.add("active");
+
+    let timer1 = setTimeout(() => {
+        popup.classList.remove("active");
+        popup.style.display = "none";
+    }, 5000);
+
+    let timer2 = setTimeout(() => {
+        progress.classList.remove("active");
+    }, 5300);
+
+    closeIcon.addEventListener("click", () => {
+        popup.classList.remove("active");
+        progress.classList.remove("active");
+        clearTimeout(timer1);
+        clearTimeout(timer2);
+    });
 }

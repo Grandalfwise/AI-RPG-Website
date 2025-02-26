@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/logo-no-background.png')}}">
     <meta name="author" content="Grandalfwise">
+    <script src="https://kit.fontawesome.com/8be4c93670.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -30,7 +31,7 @@
             <h2 class="title" data-text="Select a Story:">Select a Story:</h2>
             <p>
                 {% for key, description in stories.items() %}
-                    <p><button class="glow-on-hover" style="font-family: 'IBM Plex Mono';" onclick="startGame('{{ key }}'); showPopup('Starting Story')">{{ description }}</button></p>
+                    <p><button class="glow-on-hover" style="font-family: 'IBM Plex Mono';" onclick="startGame('{{ key }}'); showPopup('Success', 'Starting Story')">{{ description }}</button></p>
                 {% endfor %}
             </p>
         </div>
@@ -42,8 +43,15 @@
     </div>
 
     <div id="popup" class="popup">
-        <p id="popup-message" class="popup-message"></p>
-        <button onclick="closePopup()">✖</button>
+        <div class="popup-content">
+            <i class="fa-solid fa-check check"></i>
+            <div class="message">
+              <div id="popup-title" class="popup-title"></div>
+              <div id="popup-message" class="popup-message"></div>
+            </div>
+          </div>
+          <i class="fa-solid fa-xmark close"></i>
+          <div id="progress" class="progress"></div>
     </div>
 
 </body>

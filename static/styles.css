@@ -246,42 +246,104 @@ h2 {
 .popup {
     border: 1px solid rgba(181, 0, 236, 0.5);
     background-color: rgba(181, 0, 236, 0.12156862745098039);
-    box-shadow: 0 0 10px rgba(181, 0, 236, 1);
+    box-shadow: 0 6px 20px -5px rgba(181, 0, 236, 1);
     color: #ffffff;
-    transition:0.5s;
-    animation: fadeIn 0.5s ease-in-out;
-    bottom: 20px;
+    bottom: 15px;
     right: 20px;
-    position: fixed;
+    position: absolute;
     display: none;
     align-items: center;
-    border-radius: 50px;
+    border-radius: 12px;
+    padding: 20px 35px 20px 25px;
+    overflow: hidden;
+    transform: translateX(calc(100% + 30px));
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.35);
 }
 
-.popup:hover{
-    background-color: rgba(181, 0, 236, 1);
-    transition:0.5s;
+.popup.active {
+    transform: translateX(0%);
+}
+
+.popup .popup-content {
+    display: flex;
+    align-items: center;
+}
+
+.popup-content .check {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 35px;
+    min-width: 35px;
+    background-color: #b500ec;
+    color: #fff;
+    font-size: 20px;
+    border-radius: 50%;
+}
+
+.popup-content .message {
+    display: flex;
+    flex-direction: column;
+    margin: 0 20px;
+}
+
+
+.popup-title {
+    font-weight: bold;
+    font-size: 16px;
+    font-weight: 600;
+    color: #ffffff;
 }
 
 .popup-message {
-    margin-left: 10px;
-    margin-right: 10px;
-}
-
-/* Close Button */
-.popup button {
-    background: none;
-    border: none;
-    color: white;
     font-size: 16px;
-    cursor: pointer;
-    padding: 0 5px;
-    text-align: right;
-    margin-left: 10px;
-    margin-right: 10px;
+    font-weight: 400;
+    color: #9a9a9a;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(50px); }
-    to { opacity: 1; transform: translateY(0); }
+.popup .close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    padding: 5px;
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+.popup .close:hover {
+    opacity: 1;
+}
+
+.popup .progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.popup .progress:before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #b500ec;
+    transform-origin: left;
+    transform: scaleX(1); /* Start full width */
+}
+
+.progress.active:before {
+    animation: progress 5s linear forwards;
+}
+
+@keyframes progress {
+    0% {
+        transform: scaleX(1);
+    }
+    100% {
+        transform: scaleX(0);
+    }
 }

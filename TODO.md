@@ -43,6 +43,14 @@ https://www.pokemon.com/static-assets/content-assets/cms/img/video-games/firered
 - [ ] Sound effects
 - [ ] Optimize performance
 - [ ] Save/Load functionality
+- [ ] Multiplayer or Shared Stories - Flask-SocketIO - vote on choices
+
+### AI Ideas
+-[ ] AI-Generated Lore & Side Quests – Let AI generate side stories dynamically!
+-[ ] Dark Mode & Custom Themes – Players can choose a theme that fits their playstyle.
+-[ ] Achievements & Unlockables – Award badges for special choices made.
+-[ ] Time-Limited Events – Daily challenges where players must make a choice in 24 hours.
+
 
 ### Story Ideas
 - "dark_forest": "You find yourself lost in a dark forest, surrounded by eerie sounds.",
