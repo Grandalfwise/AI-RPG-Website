@@ -1,12 +1,15 @@
 from flask import Blueprint, render_template, request, jsonify
 from run_ai import run_ai, clean_choice, convo_history
-
+import random
 
 # Sample RPG story prompts
-STORIES = {
+story_dict = {
     "dark_forest": "You find yourself lost in a dark forest, surrounded by eerie sounds.",
-    "space_adventure": "You wake up in a spaceship, alarms blaring. Something is wrong.",
-    "medieval_quest": "A royal messenger hands you a scroll. The king needs your help."
+    "abondoned_spacecraft" : "A distress beacon leads you to an abondoned spacecraft, but the logs say it was lost 200 years ago.",
+    "medieval_quest": "A royal messenger hands you a scroll. The king needs your help.",
+    "ruined_temple" : "You wake up in a ruined temple, ancient carvings glowing softly. You don't remember how you got here.",
+    "cyber_heist": "The city skyline flickers. A rogue AI has taken control of the Grid.",
+    "chosen_sword" : "A blacksmith hands you a rusted sword. “This blade has chosen you.”"
 }
 
 main_bp = Blueprint('main', __name__)
@@ -33,6 +36,9 @@ def parse_ai_response(ai_response_data):
 
 @main_bp.route('/')
 def home():
+    story_list = list(story_dict.items())
+    global STORIES
+    STORIES = dict(random.sample(story_list, 3))
     return render_template('index.html', stories=STORIES)
 
 
