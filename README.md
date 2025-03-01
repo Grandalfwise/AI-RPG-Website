@@ -1,9 +1,9 @@
 
-# AI Dungeon Master RPG 
+# AIBound
 
-AI Dungeon Master RPG is an **interactive text-based adventure** where an **AI acts as the Dungeon Master (DM)**, guiding players through an evolving story based on their choices.  
+AIBound is an **interactive text-based adventure** where an **AI acts as the Dungeon Master (DM)**, guiding players through an evolving story based on their choices.  
 
-Live demo now available at [rpg.obsidiusnet.au](https://rpg.obsidiusnet.au/)
+Live demo now available at [aibound.obsidiusnet.au](https://aibound.obsidiusnet.au/)
 
 ## 🎮 How It Works  
 1. **Choose a Story** – Pick from different adventure settings (e.g., **fantasy, sci-fi, horror**).  
@@ -32,7 +32,7 @@ pip install -r requirements.txt
 python app.py
 ```
 
-Now open `http://127.0.0.1:5000/` in your browser.
+Now open [`http://127.0.0.1:5000/`](http://127.0.0.1:5000/) in your browser.
 
 # 🚀 Features
 ✅ AI-Generated Storytelling – Feels like playing with a real Dungeon Master.
@@ -41,9 +41,9 @@ Now open `http://127.0.0.1:5000/` in your browser.
 ✅ Easy to Play – Just click and explore!
 
 ## 🔗 Links
-* Live Demo: [Link](https://rpg.obsidiusnet.au/)
-* Join the Discord: [Your Discord Server](https://discord.gg/8Fcku2M5Gx)
-*  AI API Discord (Green Tea Development): [Tea Tree AI Discord](https://discord.gg/aQbvStbN3h)
+* Live Demo: [aibound.obsidiusnet.au](https://aibound.obsidiusnet.au/)
+* Join the Discord: [.gg/8Fcku2M5Gx](https://discord.gg/8Fcku2M5Gx)
+* AI API Discord (Green Tea Development): [Tea Tree AI Discord](https://discord.gg/aQbvStbN3h)
 
 ## 🤝 Contributing
 Want to improve the game? Feel free to fork, submit Pull Requets, or open issues!
