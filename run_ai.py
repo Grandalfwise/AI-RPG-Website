@@ -4,12 +4,14 @@ import requests
 import re
 
 load_dotenv('.env')
-API_TOKEN = os.getenv('API_TOKEN')
-API_BASE_URL = "https://chat.teatree.chat/api/chat/completions"
-HEADERS = {"Authorization": f"Bearer {API_TOKEN}"}
+#API_TOKEN = os.getenv('API_TOKEN')
+API_BASE_URL = "https://api.teatree.chat/v1/chat/completions"
+#HEADERS = {"Authorization": f"Bearer {API_TOKEN}"}
 
-model = "roleplay-ai"
+model = "gpt-4o"
 convo_history = []
+temperature = 1
+max_tokens = 200
 
 instructions = [
     {"role": "system",
@@ -24,10 +26,12 @@ def run_ai():
     try:
         response = requests.post(
             API_BASE_URL,
-            headers=HEADERS,
+            #headers=HEADERS,
             json={
                 "model": model,
-                "messages": convo_history + instructions
+                "messages": convo_history + instructions,
+                "max_tokens": max_tokens,
+                "temperature": temperature
             }
         )
 
